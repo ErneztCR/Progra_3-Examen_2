@@ -67,13 +67,25 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="css\gridview.css" />
     <Content Include="css\Menu.css" />
+    <Content Include="Equipos.aspx" />
+    <Content Include="Tecnicos.aspx" />
+    <Content Include="Usuarios.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="clases\ClaseEquipos.cs" />
     <Compile Include="clases\ClaseTecnicos.cs" />
     <Compile Include="clases\ClaseUsuarios.cs" />
+    <Compile Include="clases\DBconn.cs" />
+    <Compile Include="Equipos.aspx.cs">
+      <DependentUpon>Equipos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Equipos.aspx.designer.cs">
+      <DependentUpon>Equipos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Menu.Master.cs">
       <DependentUpon>Menu.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -82,6 +94,20 @@
       <DependentUpon>Menu.Master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tecnicos.aspx.cs">
+      <DependentUpon>Tecnicos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Tecnicos.aspx.designer.cs">
+      <DependentUpon>Tecnicos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Usuarios.aspx.cs">
+      <DependentUpon>Usuarios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Usuarios.aspx.designer.cs">
+      <DependentUpon>Usuarios.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Menu.Master" />
