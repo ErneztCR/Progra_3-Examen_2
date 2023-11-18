@@ -23,6 +23,9 @@
                             <a class="nav-link" href="Usuarios.aspx">Usuarios</a>
                             <a class="nav-link" href="Equipos.aspx">Equipos</a>
                             <a class="nav-link" href="Tecnicos.aspx">Tecnicos</a>
+                            <a class="nav-link" href="Asignaciones.aspx">Asignaciones</a>
+                            <a class="nav-link" href="Reparaciones.aspx">Reparaciones</a>
+                            <a class="nav-link" href="DetalleReparacion.aspx">Detalles de Reparaciones</a>
                         </div>
                     </div>
                 </div>

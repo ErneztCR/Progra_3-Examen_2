@@ -67,18 +67,35 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Asignaciones.aspx" />
     <Content Include="css\gridview.css" />
     <Content Include="css\Menu.css" />
+    <Content Include="DetalleReparacion.aspx" />
     <Content Include="Equipos.aspx" />
+    <Content Include="Reparaciones.aspx" />
     <Content Include="Tecnicos.aspx" />
     <Content Include="Usuarios.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Asignaciones.aspx.cs">
+      <DependentUpon>Asignaciones.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Asignaciones.aspx.designer.cs">
+      <DependentUpon>Asignaciones.aspx</DependentUpon>
+    </Compile>
     <Compile Include="clases\ClaseEquipos.cs" />
     <Compile Include="clases\ClaseTecnicos.cs" />
     <Compile Include="clases\ClaseUsuarios.cs" />
     <Compile Include="clases\DBConn.cs" />
+    <Compile Include="DetalleReparacion.aspx.cs">
+      <DependentUpon>DetalleReparacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DetalleReparacion.aspx.designer.cs">
+      <DependentUpon>DetalleReparacion.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Equipos.aspx.cs">
       <DependentUpon>Equipos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -94,6 +111,13 @@
       <DependentUpon>Menu.Master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reparaciones.aspx.cs">
+      <DependentUpon>Reparaciones.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reparaciones.aspx.designer.cs">
+      <DependentUpon>Reparaciones.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Tecnicos.aspx.cs">
       <DependentUpon>Tecnicos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
