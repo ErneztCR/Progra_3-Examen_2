@@ -25,21 +25,23 @@
     <br />
 
     <div class="container text-center">
+        Codigo de equipo:
+        <asp:DropDownList ID="DropDownList1" class="form-control" runat="server"></asp:DropDownList>
         Tipo de equipo:
         <asp:TextBox ID="TextBoxtipoequipo" class="form-control" runat="server"></asp:TextBox>
         Modelo:
         <asp:TextBox ID="TextBoxmodel" class="form-control" runat="server"></asp:TextBox>
         ID de Usuario:
-        <asp:TextBox ID="TextBoxuserid" class="form-control" runat="server"></asp:TextBox>
+        <asp:DropDownList ID="DropDownListuserid" class="form-control" runat="server"></asp:DropDownList>
     </div>
 
     <br />
     <br />
 
     <div class="container text-center">
-        <asp:Button ID="Button1" class="btn btn-outline-primary" runat="server" Text="Agregar" />
-        <asp:Button ID="Button2" class="btn btn-outline-secondary" runat="server" Text="Borrar" />
-        <asp:Button ID="Button3" runat="server" class="btn btn-outline-danger" Text="Modificar" />
-        <asp:Button ID="Bconsulta" runat="server" class="btn btn-outline-danger" Text="Consultar" />
+        <asp:Button ID="Button1" class="btn btn-outline-primary" runat="server" Text="Agregar" OnClick="Button1_Click" />
+        <asp:Button ID="Button2" class="btn btn-outline-danger" runat="server" Text="Borrar" OnClick="Button2_Click" />
+        <asp:Button ID="Button3" runat="server" class="btn btn-outline-primary" Text="Modificar" OnClick="Button3_Click" />
+        <asp:Button ID="Bconsulta" runat="server" class="btn btn-outline-primary" Text="Consultar" OnClick="Bconsulta_Click" />
     </div>
 </asp:Content>

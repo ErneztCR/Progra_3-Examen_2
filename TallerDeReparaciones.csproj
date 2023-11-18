@@ -78,7 +78,7 @@
     <Compile Include="clases\ClaseEquipos.cs" />
     <Compile Include="clases\ClaseTecnicos.cs" />
     <Compile Include="clases\ClaseUsuarios.cs" />
-    <Compile Include="clases\DBconn.cs" />
+    <Compile Include="clases\DBConn.cs" />
     <Compile Include="Equipos.aspx.cs">
       <DependentUpon>Equipos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

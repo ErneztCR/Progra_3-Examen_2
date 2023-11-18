@@ -6,7 +6,7 @@ using System.Web;
 
 namespace TallerDeReparaciones.clases
 {
-    public class DBconn
+    public class DBConn
     {
         public static SqlConnection obtenerConexion()
         {

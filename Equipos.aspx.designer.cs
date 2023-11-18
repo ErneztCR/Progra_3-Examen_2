@@ -24,6 +24,15 @@ namespace TallerDeReparaciones
         protected global::System.Web.UI.WebControls.GridView datagrid;
 
         /// <summary>
+        /// DropDownList1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
+
+        /// <summary>
         /// TextBoxtipoequipo control.
         /// </summary>
         /// <remarks>
@@ -42,13 +51,13 @@ namespace TallerDeReparaciones
         protected global::System.Web.UI.WebControls.TextBox TextBoxmodel;
 
         /// <summary>
-        /// TextBoxuserid control.
+        /// DropDownListuserid control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxuserid;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListuserid;
 
         /// <summary>
         /// Button1 control.

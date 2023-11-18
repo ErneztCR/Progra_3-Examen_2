@@ -62,8 +62,7 @@ CREATE TABLE DetallesReparacion (
 -- STORE PROCEDURE
 
 -- Stored Procedure para insertar un nuevo usuario
-
-CREATE PROCEDURE InsertarUsuario
+CREATE PROCEDURE AgregarUsuario
     @Nombre VARCHAR(50),
     @CorreoElectronico VARCHAR(50),
     @Telefono VARCHAR(15)
@@ -71,19 +70,6 @@ AS
 BEGIN
     INSERT INTO Usuarios (Nombre, CorreoElectronico, Telefono)
     VALUES (@Nombre, @CorreoElectronico, @Telefono);
-END;
-
--- Stored Procedure para actualizar los datos de un usuario
-CREATE PROCEDURE ActualizarUsuario
-    @UsuarioID INT,
-    @Nombre VARCHAR(50),
-    @CorreoElectronico VARCHAR(50),
-    @Telefono VARCHAR(15)
-AS
-BEGIN
-    UPDATE Usuarios
-    SET Nombre = @Nombre, CorreoElectronico = @CorreoElectronico, Telefono = @Telefono
-    WHERE UsuarioID = @UsuarioID;
 END;
 
 -- Stored Procedure para eliminar un usuario
@@ -95,16 +81,29 @@ BEGIN
     WHERE UsuarioID = @UsuarioID;
 END;
 
--- Stored Procedure para obtener todos los usuarios
-CREATE PROCEDURE ObtenerTodosLosUsuarios
+-- Stored Procedure para actualizar los datos de un usuario
+CREATE PROCEDURE ModificarUsuario
+    @UsuarioID INT,
+    @Nombre VARCHAR(50),
+    @CorreoElectronico VARCHAR(50),
+    @Telefono VARCHAR(15)
 AS
 BEGIN
-    SELECT * FROM Usuarios;
+    UPDATE Usuarios
+    SET Nombre = @Nombre, CorreoElectronico = @CorreoElectronico, Telefono = @Telefono
+    WHERE UsuarioID = @UsuarioID;
 END;
 
+-- Stored Procedure para consultar usuarios usando filtro
+CREATE PROCEDURE ConsultarUsuario
+@UsuarioID INT
+AS
+BEGIN
+    SELECT * FROM Usuarios WHERE UsuarioID = @UsuarioID;
+END;
 
 -- Stored Procedure para insertar un nuevo equipo
-CREATE PROCEDURE InsertarEquipo
+CREATE PROCEDURE AgregarEquipo
     @TipoEquipo VARCHAR(50),
     @Modelo VARCHAR(50),
     @UsuarioID INT
@@ -112,19 +111,6 @@ AS
 BEGIN
     INSERT INTO Equipos (TipoEquipo, Modelo, UsuarioID)
     VALUES (@TipoEquipo, @Modelo, @UsuarioID);
-END;
-
--- Stored Procedure para actualizar los datos de un equipo
-CREATE PROCEDURE ActualizarEquipo
-    @EquipoID INT,
-    @TipoEquipo VARCHAR(50),
-    @Modelo VARCHAR(50),
-    @UsuarioID INT
-AS
-BEGIN
-    UPDATE Equipos
-    SET TipoEquipo = @TipoEquipo, Modelo = @Modelo, UsuarioID = @UsuarioID
-    WHERE EquipoID = @EquipoID;
 END;
 
 -- Stored Procedure para eliminar un equipo
@@ -136,75 +122,35 @@ BEGIN
     WHERE EquipoID = @EquipoID;
 END;
 
+-- Stored Procedure para actualizar los datos de un equipo
+CREATE PROCEDURE ModificarEquipo
+    @EquipoID INT,
+    @TipoEquipo VARCHAR(50),
+    @Modelo VARCHAR(50),
+    @UsuarioID INT
+AS
+BEGIN
+    UPDATE Equipos
+    SET TipoEquipo = @TipoEquipo, Modelo = @Modelo, UsuarioID = @UsuarioID
+    WHERE EquipoID = @EquipoID;
+END;
+
 -- Stored Procedure para obtener todos los equipos
-CREATE PROCEDURE ObtenerTodosLosEquipos
+CREATE PROCEDURE ConsultarEquipo
+@EquipoID INT
 AS
 BEGIN
-    SELECT * FROM Equipos;
+    SELECT * FROM Equipos WHERE EquipoID = @EquipoID;
 END;
-
-
--- Stored Procedure para insertar una nueva reparación
-CREATE PROCEDURE InsertarReparacion
-    @EquipoID INT,
-    @FechaSolicitud DATETIME,
-    @Estado VARCHAR(50)
-AS
-BEGIN
-    INSERT INTO Reparaciones (EquipoID, FechaSolicitud, Estado)
-    VALUES (@EquipoID, @FechaSolicitud, @Estado);
-END;
-
--- Stored Procedure para actualizar los datos de una reparación
-CREATE PROCEDURE ActualizarReparacion
-    @ReparacionID INT,
-    @EquipoID INT,
-    @FechaSolicitud DATETIME,
-    @Estado VARCHAR(50)
-AS
-BEGIN
-    UPDATE Reparaciones
-    SET EquipoID = @EquipoID, FechaSolicitud = @FechaSolicitud, Estado = @Estado
-    WHERE ReparacionID = @ReparacionID;
-END;
-
--- Stored Procedure para eliminar una reparación
-CREATE PROCEDURE EliminarReparacion
-    @ReparacionID INT
-AS
-BEGIN
-    DELETE FROM Reparaciones
-    WHERE ReparacionID = @ReparacionID;
-END;
-
--- Stored Procedure para obtener todas las reparaciones
-CREATE PROCEDURE ObtenerTodasLasReparaciones
-AS
-BEGIN
-    SELECT * FROM Reparaciones;
-END;
-
 
 -- Stored Procedure para insertar un nuevo técnico
-CREATE PROCEDURE InsertarTecnico
+CREATE PROCEDURE AgregarTecnico
     @Nombre VARCHAR(50),
     @Especialidad VARCHAR(50)
 AS
 BEGIN
     INSERT INTO Tecnicos (Nombre, Especialidad)
     VALUES (@Nombre, @Especialidad);
-END;
-
--- Stored Procedure para actualizar los datos de un técnico
-CREATE PROCEDURE ActualizarTecnico
-    @TecnicoID INT,
-    @Nombre VARCHAR(50),
-    @Especialidad VARCHAR(50)
-AS
-BEGIN
-    UPDATE Tecnicos
-    SET Nombre = @Nombre, Especialidad = @Especialidad
-    WHERE TecnicoID = @TecnicoID;
 END;
 
 -- Stored Procedure para eliminar un técnico
@@ -216,50 +162,37 @@ BEGIN
     WHERE TecnicoID = @TecnicoID;
 END;
 
+-- Stored Procedure para actualizar los datos de un técnico
+CREATE PROCEDURE ModificarTecnico
+    @TecnicoID INT,
+    @Nombre VARCHAR(50),
+    @Especialidad VARCHAR(50)
+AS
+BEGIN
+    UPDATE Tecnicos
+    SET Nombre = @Nombre, Especialidad = @Especialidad
+    WHERE TecnicoID = @TecnicoID;
+END;
+
 -- Stored Procedure para obtener todos los técnicos
-CREATE PROCEDURE ObtenerTodosLosTecnicos
+CREATE PROCEDURE ConsultarTecnico
+@TecnicoID INT
 AS
 BEGIN
-    SELECT * FROM Tecnicos;
+    SELECT * FROM Tecnicos WHERE TecnicoID = @TecnicoID;
 END;
 
--- Stored Procedure para asignar un técnico a una reparación
-CREATE PROCEDURE AsignarTecnicoAReparacion
-    @ReparacionID INT,
-    @TecnicoID INT,
-    @FechaAsignacion DATETIME
-AS
-BEGIN
-    INSERT INTO Asignaciones (ReparacionID, TecnicoID, FechaAsignacion)
-    VALUES (@ReparacionID, @TecnicoID, @FechaAsignacion);
-END;
+EXECUTE AgregarUsuario;
+EXECUTE EliminarUsuario;
+EXECUTE ModificarUsuario;
+EXECUTE ConsultarUsuario;
 
--- Stored Procedure para actualizar la asignación de un técnico a una reparación
-CREATE PROCEDURE ActualizarAsignacion
-    @AsignacionID INT,
-    @ReparacionID INT,
-    @TecnicoID INT,
-    @FechaAsignacion DATETIME
-AS
-BEGIN
-    UPDATE Asignaciones
-    SET ReparacionID = @ReparacionID, TecnicoID = @TecnicoID, FechaAsignacion = @FechaAsignacion
-    WHERE AsignacionID = @AsignacionID;
-END;
+EXECUTE AgregarEquipo;
+EXECUTE EliminarEquipo;
+EXECUTE ModificarEquipo;
+EXECUTE ConsultarEquipo;
 
--- Stored Procedure para eliminar una asignación
-CREATE PROCEDURE EliminarAsignacion
-    @AsignacionID INT
-AS
-BEGIN
-    DELETE FROM Asignaciones
-    WHERE AsignacionID = @AsignacionID;
-END;
-
--- Stored Procedure para obtener todas las reparaciones
-CREATE PROCEDURE ObtenerTodasLasReparaciones
-AS
-BEGIN
-    SELECT * FROM Reparaciones;
-END;
-
+EXECUTE AgregarTecnico;
+EXECUTE EliminarTecnico;
+EXECUTE ModificarTecnico;
+EXECUTE ConsultarTecnico;
