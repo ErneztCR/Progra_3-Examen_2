@@ -196,3 +196,5 @@ EXECUTE AgregarTecnico;
 EXECUTE EliminarTecnico;
 EXECUTE ModificarTecnico;
 EXECUTE ConsultarTecnico;
+
+SELECT *  FROM Equipos where EquipoID = 1

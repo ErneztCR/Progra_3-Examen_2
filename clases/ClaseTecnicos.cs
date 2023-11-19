@@ -129,11 +129,11 @@ namespace TallerDeReparaciones.clases
             {
                 using (Conn = DBConn.obtenerConexion())
                 {
-                    SqlCommand cmd = new SqlCommand("ConsultarUsuario", Conn)
+                    SqlCommand cmd = new SqlCommand("ConsultarTecnico", Conn)
                     {
                         CommandType = CommandType.StoredProcedure
                     };
-                    cmd.Parameters.Add(new SqlParameter("@UsuarioID", TecnicoID));
+                    cmd.Parameters.Add(new SqlParameter("@TecnicoID", TecnicoID));
 
                     retorno = cmd.ExecuteNonQuery();
                 }
