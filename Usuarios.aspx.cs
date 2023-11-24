@@ -81,6 +81,28 @@ namespace TallerDeReparaciones
             }
         }
 
+        protected void LlenarGridConsultar()
+        {
+            string constr = ConfigurationManager.ConnectionStrings["Conexion"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                using (SqlCommand cmd = new SqlCommand("SELECT *  FROM Usuarios WHERE UsuarioID = '" + DropDownList1.SelectedValue + "'"))
+                {
+                    using (SqlDataAdapter sda = new SqlDataAdapter())
+                    {
+                        cmd.Connection = con;
+                        sda.SelectCommand = cmd;
+                        using (DataTable dt = new DataTable())
+                        {
+                            sda.Fill(dt);
+                            datagrid.DataSource = dt;
+                            datagrid.DataBind();  // actualizar el grid view
+                        }
+                    }
+                }
+            }
+        }
+
         protected void Button1_Click(object sender, EventArgs e)
         {
             int resultado = ClaseUsuarios.Agregar(TextBoxusername.Text, TextBoxemail.Text, TextBoxphonenumber.Text);
@@ -138,19 +160,7 @@ namespace TallerDeReparaciones
 
         protected void Bconsulta_Click(object sender, EventArgs e)
         {
-            int resultado = ClaseUsuarios.Consultar(Convert.ToInt32(DropDownList1.SelectedValue));
-
-            if (resultado > 0)
-            {
-                alertas("Usuario encontrado");
-                TextBoxusername.Text = ClaseUsuarios.Nombre;
-                TextBoxemail.Text = ClaseUsuarios.CorreoElectronico;
-                TextBoxphonenumber.Text = ClaseUsuarios.Telefono;
-            }
-            else
-            {
-                alertas("Usuario no encontrado");
-            }
+            LlenarGridConsultar();
         }
     }
 }

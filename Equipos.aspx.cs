@@ -106,6 +106,28 @@ namespace TallerDeReparaciones
             }
         }
 
+        protected void LlenarGridConsultar()
+        {
+            string constr = ConfigurationManager.ConnectionStrings["Conexion"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                using (SqlCommand cmd = new SqlCommand("SELECT * FROM Equipos WHERE EquipoID = '" + DropDownList1.SelectedValue + "'"))
+                {
+                    using (SqlDataAdapter sda = new SqlDataAdapter())
+                    {
+                        cmd.Connection = con;
+                        sda.SelectCommand = cmd;
+                        using (DataTable dt = new DataTable())
+                        {
+                            sda.Fill(dt);
+                            datagrid.DataSource = dt;
+                            datagrid.DataBind();  // actualizar el grid view
+                        }
+                    }
+                }
+            }
+        }
+
         protected void Button1_Click(object sender, EventArgs e)
         {
             int resultado = ClaseEquipos.Agregar(TextBoxtipoequipo.Text, TextBoxmodel.Text, DropDownListuserid.SelectedValue);
@@ -166,20 +188,7 @@ namespace TallerDeReparaciones
 
         protected void Bconsulta_Click(object sender, EventArgs e)
         {
-            int resultado = ClaseEquipos.Consultar(Convert.ToInt32(DropDownList1.SelectedValue));
-
-            if (resultado > 0)
-            {
-                alertas("Equipo encontrado");
-                TextBoxtipoequipo.Text = ClaseEquipos.TipoEquipo;
-                TextBoxmodel.Text = ClaseEquipos.Modelo;
-                DropDownListuserid.Text = ClaseEquipos.UsuarioID;
-            }
-            else
-            {
-                alertas("Equipo no encontrado");
-            }
-
+            LlenarGridConsultar();
         }
     }
 }
